@@ -6,7 +6,7 @@ public class Account {
 
     private int balance;
     private String bankName;
-    private final String IBAN,accountHolder;
+    private final String IBAN,accountHolder; // Most of the time, people define these line by line.
 
     public Account(int balance, String bankName, String IBAN, String accountHolder) {
         this.balance = balance;
@@ -16,6 +16,7 @@ public class Account {
     }
 
     public String getAccountHolder() {
+        // We don't usually print stuff in a getter
         System.out.println(accountHolder);
         return accountHolder;
     }
@@ -37,9 +38,12 @@ public class Account {
     public void transferTo(int transferAmount, Account account) {
         int transferMoney = balance - transferAmount;
         int receiveMoney = account.balance + transferAmount;
+        // You are not using these transferMoney and receiveMoney variables before you enter the else.
+        // Specify them there. Also, the name is not descriptive. I would use something like updatedBalance or something :)
         if (transferAmount > balance) {
             System.out.println("Sorry, you have insufficient funds, we couldn't transfer " + transferAmount + " to " + account.accountHolder);
         } else {
+            // You don't actually do the transfer here ;)
             System.out.println(accountHolder + " has transferred " + transferAmount + " to " + account.accountHolder);
             System.out.println("Your current balance is " + transferMoney);
             System.out.println();
